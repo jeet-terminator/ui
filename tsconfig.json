@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES6",
+    "declaration": true,
+    "sourceMap": true,
+    "removeComments": false,
+    "preserveConstEnums" : true,
+    "skipLibCheck": true,
+    "moduleResolution":"Bundler",
+    "strict": false,
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "paths" : {
+      // "@Odyssee-Software/thorium-components/*": ["./node_modules/@Odyssee-Software/thorium-components/*"]
+    }
+  },
+  "include": ["./src" , "Globals.d.ts"],
+  "exclude": ["node_modules"]
+}
