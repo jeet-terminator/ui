@@ -1,4 +1,6 @@
 .npmrc
+*.hot-update.js
+*.hot-update.json
 
 # Logs
 logs
