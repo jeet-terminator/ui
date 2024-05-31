@@ -1,17 +1,20 @@
 import { html , render } from "@lithium-framework/core-dom";
 import { useStyle , unsafeSVG } from "@lithium-framework/core-dom/directives";
-//import video from '../ressources/video/blingbling.mp4';
+import { controls } from "./controls";
 
 export function popUpWindow(){
   return html`<div name='pop-up-windows' style=${useStyle({
-    backgroundColor: "red",
-    position: 'absolute',
-    
+    position: "absolute",
+    backgroundColor: 'red',
+    display: "grid",
+    gridTemplateRows: "max-content min-content",
+    right: '22%',
+    bottom: '25%',
   })}>
-    <h3>Pop up</h3>
     <video width="640" height="360" controls>
-        <source src="./public/ressources/video/blingbling.mp4" type="video/mp4">
+        <source src="./ressources/video/blingbling.mp4" type="video/mp4">
         Votre navigateur ne supporte pas la balise vidéo.
     </video>
+    ${controls()}
   </div>`;
 }
