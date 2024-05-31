@@ -1,1 +1,2 @@
-export {};
+import './index.css';
+import './router';
