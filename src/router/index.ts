@@ -57,7 +57,7 @@ class Application extends LitElement{
             ${Icon( XIcon )}
           </div>
           <div style = ${useStyle({ display : 'inline-flex' , gridColumn : 1 , gridRow : 1 , justifyContent : 'center' })}>
-            <h1 style = ${useStyle({ padding : 0 , margin : 0 })} >jeeterminator</h1>
+            <h1 style = ${useStyle({ padding : 0 , margin : 0 , cursor : "pointer" })} @mousedown=${() => { window.location.hash = '#/' }} >jeeterminator</h1>
           </div>
         </header>
         <main

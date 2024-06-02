@@ -5,4 +5,5 @@
 
 body {
   font-family: 'Deadknight', sans-serif;
+  user-select: none;
 }
