@@ -12,18 +12,3 @@ import './index.css';
 import './router';
 
 render( html`<main-application></main-application>` , document.body );
-
-// render( html`<div
-//   style = ${useStyle({ 
-//     position : "absolute", 
-//     height : "100%",
-//     width : '100%',
-//     top : 0,
-//     left : 0,
-//     overflow : "hidden"
-//   })} 
-// >
-//   ${popUpWindow()}
-//   <div>${unsafeSVG(WebsiteBackground)}</div>
-// </div>` , document.body );
-
