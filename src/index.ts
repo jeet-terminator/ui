@@ -12,3 +12,4 @@ import './index.css';
 import './router';
 
 render( html`<main-application></main-application>` , document.body );
+
