@@ -5,7 +5,7 @@ import { useStyle , unsafeSVG , useEffect } from "@lithium-framework/core-dom/di
 import { LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
-import { popUpWindow } from '../components';
+import { HomeContent } from '../components';
 import { Factory } from '../components/factory';
 import { Icon } from "../components/icon";
 
@@ -16,7 +16,7 @@ import TGIcon from '../ressources/logo TG.svg';
 class Application extends LitElement{
 
   private _routes = new Routes(this, [
-    {path: '/', render: () => popUpWindow()},
+    {path: '/', render: () => HomeContent()},
     {path: '/factory', render: () => Factory()},
     {path: '/about', render: () => html`<h1>About</h1>`},
   ]);
@@ -35,6 +35,10 @@ class Application extends LitElement{
 
   goto(){
     this._routes.goto( window.location.hash.replace('#' , '') || '/' )
+  }
+
+  createRenderRoot() {
+    return this; // will render the template without shadow DOM
   }
 
   render() {
@@ -65,10 +69,12 @@ class Application extends LitElement{
             overflow : "hidden",
             backgroundImage : 'url(ressources/Fond.svg)',
             backgroundSize : "cover",
-            display : 'grid'
+            display : 'grid',
+            justifyContent: 'center',
+            alignItems: 'center'
           })}
         >
-          ${this._routes.outlet()}
+          <slot>${this._routes.outlet()}</slot>
         </main>
         <footer>
 
