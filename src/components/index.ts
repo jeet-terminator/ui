@@ -34,13 +34,11 @@ export function popUpWindow(){
     })
 
     target.addEventListener('mouseenter', (event) => {
-      console.log('Mouse entered the target element');
-      player.play();
-      player.controls(true);
+      
     });
 
     target.addEventListener('mouseleave', (event) => {
-      player.pause();
+    
     });
 
     target.addEventListener('click', (event) => {
@@ -54,9 +52,10 @@ export function popUpWindow(){
       resizeScreen();
     });
 
-    target.parentNode.parentNode.children[1].addEventListener('click', (event) => {
-      target.parentNode.setAttribute('style', 'display: none');
-    });
+    target.parentNode.parentNode.children[1].children[0].addEventListener('click',(event)=>{
+      target.parentNode.setAttribute('style','display:none;');
+      target.parentNode.parentNode.children[1].children[0].setAttribute('style','display:none;');
+    })
     
   }
 

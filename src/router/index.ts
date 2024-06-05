@@ -11,6 +11,8 @@ import { Icon } from "../components/icon";
 
 import XIcon from '../ressources/logo X.svg';
 import TGIcon from '../ressources/logo TG.svg';
+import iconSkip from '../ressources/skip.svg';
+
 
 @customElement('main-application')
 class Application extends LitElement{
@@ -20,6 +22,7 @@ class Application extends LitElement{
     {path: '/factory', render: () => Factory()},
     {path: '/about', render: () => html`<h1>About</h1>`},
   ]);
+
 
   constructor(){
     
@@ -41,6 +44,7 @@ class Application extends LitElement{
     return this; // will render the template without shadow DOM
   }
 
+
   render() {
 
     return html`
@@ -55,7 +59,7 @@ class Application extends LitElement{
           left : '0'
         })}
       >
-        <header style = ${useStyle({ display : 'grid' , padding : '5px 10px' , gap : '10px' })} >
+        <header style = ${useStyle({ display : 'grid' , padding : '5px 10px' , gap : '10px'})} >
           <div style = ${useStyle({ display : 'inline-flex' , gridColumn : 1 , gridRow : 1 })}>
             ${Icon( TGIcon )}
             ${Icon( XIcon )}
