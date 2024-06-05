@@ -53,7 +53,7 @@ export function Slider(props:{ type : 'hat' | 'body' | 'arme' | 'scape' , state:
     }})}
     <div style = ${useStyle({ display : 'inline-flex' , gap : "10px" })} >
       ${Icon({ svg : assets[props.type] , height : '30px' })}
-      <p style = ${useStyle({ fontSize : '10px' , width : '5ch' })} >${useState( config , (config) => {
+      <p style = ${useStyle({ fontSize : '10px' , width : '5ch' , color : '#e97f39' })} >${useState( config , (config) => {
         return html`${config[`${props.type}Id`]}/${config[`${props.type}Max`]}`
       } )}</p>
     </div>
@@ -113,8 +113,8 @@ export function Factory(){
       } )}
     </div>
     <div style = ${useStyle({ gridColumn : 1 , gridRow : 1 , zIndex : 1 , backgroundColor : 'white' , display : 'grid', height : '100%' , gridTemplateColumns : '1fr min-content' , borderRadius : "15px" , boxShadow : '0px 0px 10px dimgray' , maxWidth : '1000px' })} >
-      <section style = ${useStyle({ display : 'grid' , padding : "20px" , minHeight : '400px' , minWidth : '400px' })} ${ref(container)} >
-        <div style = ${useStyle({ backgroundColor : '#f9ecb4' , display : 'grid' })} >
+      <section style = ${useStyle({ display : 'grid' , padding : "10px" , minHeight : '400px' , minWidth : '400px' })} >
+        <div style = ${useStyle({ backgroundColor : '#f9ecb4' , display : 'grid' })} ${ref(container)} >
           ${useState( config , ( newConfig ) => {
 
             return html`
