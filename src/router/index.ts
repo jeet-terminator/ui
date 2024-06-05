@@ -16,7 +16,7 @@ import TGIcon from '../ressources/logo TG.svg';
 class Router extends LitElement{
 
   private _routes = new Routes(this, [
-    {path: '/', render: () => popUpWindow()},
+    // {path: '/', render: () => popUpWindow()},
     {path: '/factory', render: () => Factory()},
     {path: '/about', render: () => html`<h1>About</h1>`},
   ]);
