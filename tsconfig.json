@@ -15,7 +15,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "paths" : {
-      // "@Odyssee-Software/thorium-components/*": ["./node_modules/@Odyssee-Software/thorium-components/*"]
+      // "@Odyssee-Software/thorium-components/*": ["@Odyssee-Software/thorium-components/*"]
     }
   },
   "include": ["./src" , "Globals.d.ts"],

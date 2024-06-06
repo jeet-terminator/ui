@@ -2,7 +2,7 @@ import { Routes , RouteConfig } from "@lit-labs/router";
 // import { WebComponent } from "@lithium-framework/core";
 import { html } from "@lithium-framework/core-dom";
 import { useStyle , unsafeSVG , useEffect } from "@lithium-framework/core-dom/directives";
-import { LitElement } from 'lit';
+import { LitElement, TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 import { HomeContent } from '../components';
@@ -22,6 +22,8 @@ class Router extends LitElement{
   ]);
 
   config:RouteConfig[];
+  header:( x:Router ) => TemplateResult<any>;
+  footer:( x:Router ) => TemplateResult<any>;
 
   constructor(){
     
@@ -39,42 +41,19 @@ class Router extends LitElement{
     this._routes.goto( window.location.hash.replace('#' , '') || '/' )
   }
 
+  createRenderRoot() {
+    return this; // will render the template without shadow DOM
+  }
+
   render() {
 
     return html`
-      <div
-        style = ${useStyle({
-          display : 'grid',
-          height : '100%',
-          width : '100%',
-          position : 'fixed',
-          gridTemplateRows : 'min-content 1fr',
-          top : '0',
-          left : '0'
-        })}
-      >
-        <header style = ${useStyle({ display : 'grid' , padding : '5px 10px' , gap : '10px' })} >
-          <div style = ${useStyle({ display : 'inline-flex' , gridColumn : 1 , gridRow : 1 })}>
-            ${Icon( TGIcon )}
-            ${Icon( XIcon )}
-          </div>
-          <div style = ${useStyle({ display : 'inline-flex' , gridColumn : 1 , gridRow : 1 , justifyContent : 'center' })}>
-            <h1 style = ${useStyle({ padding : 0 , margin : 0 , cursor : "pointer" })} @mousedown=${() => { window.location.hash = '#/' }} >jeeterminator</h1>
-          </div>
-        </header>
-        <main
-          style = ${useStyle({ 
-            overflow : "hidden",
-            backgroundImage : 'url(ressources/Fond.svg)',
-            backgroundSize : "cover",
-            display : 'grid'
-          })}
-        >
-          ${this._routes.outlet()}
+      <div>
+        ${this.header( this ) || null}
+        <main>
+          ${this._routes.outlet() || null}
         </main>
-        <footer>
-
-        </footer>
+        ${this.footer( this ) || null}
       </div>
     `;
   }
@@ -86,6 +65,14 @@ declare global {
     'lithium-router': Router;
   }
 }
+
+html`<lithium-router 
+  .config=${[
+    { path : '/' , render : () => html`<h1>Hello World</h1>` }
+  ]}
+  .header=${( x:Router ) => { return html`<header>Header</header>` }}
+  .footer=${( x:Router ) => { return html`<footer>Footer</footer>` }}
+/>`
 
 @customElement('main-application')
 class Application extends LitElement{
