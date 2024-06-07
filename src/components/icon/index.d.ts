@@ -1,5 +1,5 @@
 export declare function Icon(props: {
-    svg: string;
+    svg: string | any;
     height?: string;
     mousedown?: (event: MouseEvent) => void;
 }): import("lit-html").TemplateResult<1>;

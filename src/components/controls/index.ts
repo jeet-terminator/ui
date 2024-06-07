@@ -10,6 +10,6 @@ export function controls(){
     backgroundColor: '#f09d6a'
   })}>
   ${button()}
-  <div>${unsafeSVG(expand)}</div>
+  <div>${unsafeSVG(expand as any)}</div>
   </div>`;
 }

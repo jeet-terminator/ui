@@ -53,7 +53,7 @@ export function Slider(props:{ type : 'hat' | 'body' | 'arme' | 'scape' , state:
     }})}
     <div style = ${useStyle({ display : 'inline-flex' , gap : "10px" })} >
       ${Icon({ svg : assets[props.type] , height : '30px' })}
-      <p style = ${useStyle({ fontSize : '10px' , width : '5ch' , color : '#e97f39' })} >${useState( config , (config) => {
+      <p style = ${useStyle({ fontSize : '10px' , width : '5ch' , color : '#e97f39' , display : 'flex' , alignItems : 'center' })} >${useState( config , (config) => {
         return html`${config[`${props.type}Id`]}/${config[`${props.type}Max`]}`
       } )}</p>
     </div>
@@ -149,7 +149,7 @@ export function Factory(){
               width : '100%',
               cursor : 'pointer'
             })} >
-            ${unsafeSVG(DicesIcon)}
+            ${unsafeSVG(DicesIcon as any)}
           </div>
         </div>
         <div style = ${useStyle({ display : 'grid' , gridAutoRows : 'min-content' , justifyContent : 'center' , gap : "40px" })}>
@@ -177,7 +177,7 @@ export function Factory(){
               width : '200px',
               cursor : 'pointer'
             })} >
-            ${unsafeSVG(BuyIcon)}
+            ${unsafeSVG(BuyIcon as any)}
           </div>
         </div>
       </section>

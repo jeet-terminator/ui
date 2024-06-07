@@ -16,8 +16,3 @@ export declare function Arme14(): import("lit-html").TemplateResult<1>;
 export declare function Arme15(): import("lit-html").TemplateResult<1>;
 export declare function Arme16(): import("lit-html").TemplateResult<1>;
 export declare function Arme17(): import("lit-html").TemplateResult<1>;
-export declare function Arme18(): import("lit-html").TemplateResult<1>;
-export declare function Arme19(): import("lit-html").TemplateResult<1>;
-export declare function Arme20(): import("lit-html").TemplateResult<1>;
-export declare function Arme21(): import("lit-html").TemplateResult<1>;
-export declare function Arme22(): import("lit-html").TemplateResult<1>;

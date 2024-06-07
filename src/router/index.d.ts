@@ -1,11 +1,14 @@
 import { RouteConfig } from "@lit-labs/router";
-import { LitElement } from 'lit';
+import { LitElement, TemplateResult } from 'lit';
 declare class Router extends LitElement {
     private _routes;
     config: RouteConfig[];
+    header: (x: Router) => TemplateResult<any>;
+    footer: (x: Router) => TemplateResult<any>;
     constructor();
     goto(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    createRenderRoot(): this;
+    render(): TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

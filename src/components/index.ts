@@ -1,5 +1,5 @@
 import { html , render } from "@lithium-framework/core-dom";
-import { useStyle , unsafeSVG, useEffect } from "@lithium-framework/core-dom/directives";
+import { useStyle , unsafeSVG, useEffect , createRef , ref } from "@lithium-framework/core-dom/directives";
 import { controls } from "./controls";
 import { Icon } from "./icon";
 import iconBuy from '../ressources/Buy.svg';
@@ -10,62 +10,45 @@ import popUpWindowCss from './style.module.css'
 import videoLecterCss from './style.module.css'
 import 'video.js/dist/video-js.css';
 
-export function popUpWindow(){
+export function popUpWindow() {
 
-  function onInit( target ){
+  const popup_ref = createRef<HTMLDivElement>()
+
+  function onInit(target) {
+    
     var player = videojs(target, {
-      controls: 'false',
-      autoplay: 'false',
+      controls: false, // Désactiver les contrôles ici
+      autoplay: true,
     });
 
-    function resizeScreen(){
-  
+    function resizeScreen() {
       let width = window.innerWidth;
       let height = window.innerHeight;
-      console.log({"screen_width": width, "screen_height": height})
+      console.log({"screen_width": width, "screen_height": height});
       player.width(width);
       player.height(height);
-      player.fluid(true)
-      console.log(player.fluid_)
+      player.fluid(true);
+      console.log(player.fluid_);
     }
 
-    player.on('ready',()=>{
-      console.log("ready")
-    })
-
-    target.addEventListener('mouseenter', (event) => {
-      
+    player.on('ready', () => {
+      console.log("ready");
     });
 
-    target.addEventListener('mouseleave', (event) => {
-    
-    });
+    // target.addEventListener('click', (event) => {
+    //   player.pause();
+    //   // player.controls(false);
+    //   console.log(player.controls_);
+    // });
 
-    target.addEventListener('click', (event) => {
-      player.pause();
-      player.controls(true);
-      console.log(player.controls_)
-    });
-
-
-    window.addEventListener('resize', () => {
+    target.addEventListener('resize', () => {
       resizeScreen();
     });
 
-    target.parentNode.parentNode.children[1].children[0].addEventListener('click',(event)=>{
-      target.parentNode.setAttribute('style','display:none;');
-      target.parentNode.parentNode.children[1].children[0].setAttribute('style','display:none;');
-    })
-    
   }
 
-  
-
-  return html`<div name='pop-up-windows' class=${popUpWindowCss} style=${useStyle({
-    position: "absolute",
-  })}>
-    <video ${useEffect(onInit)} id="my-video" class="video-js" controls preload="auto"
-      poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+  return html`<div name='pop-up-windows' class=${popUpWindowCss} ${ref(popup_ref)}>
+    <video ${useEffect(onInit)} id="my-video" class="video-js" preload="auto" data-setup="{}">
       <source src="./ressources/video/blingbling.mp4" type="video/mp4" />
       <source src="./ressources/video/blingbling.mp4.webm" type="video/webm" />
         <p class="vjs-no-js">
@@ -76,33 +59,29 @@ export function popUpWindow(){
     </video>
     <div name='btn-zone'>
       <div name='skip-btn'>
-        ${Icon(iconSkip)}
+        <fast-button appearance="accent" style = ${useStyle({ pointerEvents : 'all' })} @mousedown = ${( event:MouseEvent ) => popup_ref.value?.remove() }>Skip</fast-button>
+        <!-- ${Icon({ svg : iconSkip })} -->
       </div>
     </div>
   </div>`;
-
-  
 }
 
-export function HomeContent(){
+export function HomeContent() {
+
   return html`<div name='home-content' style=${useStyle({
-    display: 'grid',
-    gridTemplateRows: 'max-content max-content max-content',
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   })}>
     ${popUpWindow()}
-    <div name='iconFactory' style=${useStyle({
-      width: '250px'
-    })}>${Icon(iconFactory)}</div>
+    ${Icon({ svg : iconFactory , height : '200px' , mousedown : () => window.location.hash = '#/factory' })}
     <div name='content' style=${useStyle({
       backgroundImage : 'url(ressources/Tete.svg)',
       backgroundRepeat: 'no-repeat',
       width: '250px',
       height: '250px'
     })}></div>
-    <div name='iconBuy' style=${useStyle({
-      width: '250px'
-    })}>${Icon(iconBuy)}</div>
+    ${Icon({ svg : iconBuy , height : '200px' })}
   </div>`;
 }
