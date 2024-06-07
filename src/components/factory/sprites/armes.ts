@@ -18,3 +18,8 @@ export function Arme14(){ return Sprite({ src : 'ressources/perso/arme/arme14.sv
 export function Arme15(){ return Sprite({ src : 'ressources/perso/arme/arme15.svg' }) }
 export function Arme16(){ return Sprite({ src : 'ressources/perso/arme/arme16.svg' }) }
 export function Arme17(){ return Sprite({ src : 'ressources/perso/arme/arme17.svg' }) }
+export function Arme18(){ return Sprite({ src : 'ressources/perso/arme/arme18.svg' }) }
+export function Arme19(){ return Sprite({ src : 'ressources/perso/arme/arme19.svg' }) }
+export function Arme20(){ return Sprite({ src : 'ressources/perso/arme/arme20.svg' }) }
+export function Arme21(){ return Sprite({ src : 'ressources/perso/arme/arme21.svg' }) }
+export function Arme22(){ return Sprite({ src : 'ressources/perso/arme/arme22.svg' }) }
