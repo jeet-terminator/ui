@@ -50,7 +50,6 @@ export function popUpWindow() {
   return html`<div name='pop-up-windows' class=${popUpWindowCss} ${ref(popup_ref)}>
     <video ${useEffect(onInit)} id="my-video" class="video-js" preload="auto" data-setup="{}">
       <source src="./ressources/video/blingbling.mp4" type="video/mp4" />
-      <source src="./ressources/video/blingbling.mp4.webm" type="video/webm" />
         <p class="vjs-no-js">
           To view this video please enable JavaScript, and consider upgrading to a
           web browser that
@@ -75,13 +74,13 @@ export function HomeContent() {
     alignItems: "center",
   })}>
     ${popUpWindow()}
-    ${Icon({ svg : iconFactory , height : '200px' , mousedown : () => window.location.hash = '#/factory' })}
+    ${Icon({ svg : iconFactory , height : '100px' , mousedown : () => window.location.hash = '#/factory' , aspectRatio : '2/1' })}
     <div name='content' style=${useStyle({
       backgroundImage : 'url(ressources/Tete.svg)',
       backgroundRepeat: 'no-repeat',
       width: '250px',
       height: '250px'
     })}></div>
-    ${Icon({ svg : iconBuy , height : '200px' })}
+    ${Icon({ svg : iconBuy , height : '100px' , aspectRatio : '2/1' })}
   </div>`;
 }

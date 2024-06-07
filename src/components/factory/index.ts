@@ -15,6 +15,7 @@ import ImgIcon from '../../ressources/Icon img.svg';
 import RessetIcon from '../../ressources/reset.svg';
 
 import DicesIcon from '../../ressources/Icon dice.svg';
+import DownloadIcon from '../../ressources/bxs-download.svg';
 import BuyIcon from '../../ressources/Buy.svg';
 
 import * as Heads from './sprites/head';
@@ -80,15 +81,15 @@ export function Factory(){
 
   let [ config , setConfig ] = createState({
     scapeId : 0,
-    scapeMax : 5,
+    scapeMax : Object.keys(Scapes).length - 1,
     armeId : 0,
-    armeMax : 17,
+    armeMax : Object.keys(Armes).length - 1,
     bodyId : 0,
-    bodyMax : 4,
+    bodyMax : Object.keys(Body).length - 1,
     headId : 0,
     headMax : 0,
     hatId : 0,
-    hatMax : 4,
+    hatMax : Object.keys(Hats).length - 1,
   });
 
   setConfig({
@@ -129,7 +130,23 @@ export function Factory(){
         </div>
       </section>
       <section style = ${useStyle({ display : 'grid' , alignItems : 'center' , padding: "20px" , gridTemplateRows : '1fr min-content' , borderLeft : '1px solid lightgray' , gap : '10px' })} >
-        <div style = ${ useStyle({ display : 'grid' , alignContent : 'center' , justifyContent : 'end' , paddingBottom : '10px' }) } >
+        <div style = ${ useStyle({ display : 'inline-flex' , alignContent : 'center' , justifyContent : 'end' , paddingBottom : '10px' , gap : '10px' }) } >
+          <div 
+            style = ${useStyle({ display : 'flex' , alignItems : 'center' , fill : '#fcbd92' , cursor : 'pointer' })} 
+            @mousedown=${() => {
+
+            setLoading(true)
+
+            toJpeg( container.value ).then((image) => {
+              download(image , 'my-jeeterminator.jpeg');
+
+              setLoading(null)
+            })
+
+            }}
+            >
+            ${unsafeSVG(DownloadIcon)}
+          </div>
           <div 
             @mousedown = ${() => {
               setConfig({
@@ -146,7 +163,6 @@ export function Factory(){
               justifyContent : 'end' , 
               height : '30px' , 
               aspectRatio : '1/1' , 
-              width : '100%',
               cursor : 'pointer'
             })} >
             ${unsafeSVG(DicesIcon as any)}
@@ -159,18 +175,7 @@ export function Factory(){
           ${Slider( { type : 'scape' , state : config } )}
         </div>
         <div style = ${ useStyle({ display : 'grid' , alignContent : 'center' , justifyContent : 'center' }) } >
-          <div 
-            @mousedown=${() => {
-
-              setLoading(true)
-
-              toJpeg( container.value ).then((image) => {
-                download(image , 'my-jeeterminator.jpeg');
-
-                setLoading(null)
-              })
-
-            }}
+          <div
             style = ${useStyle({ 
               display : 'flex' , 
               alignItems : 'flex-end' , 

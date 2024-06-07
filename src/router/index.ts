@@ -122,9 +122,9 @@ class Application extends LitElement{
         })}
       >
         <header style = ${useStyle({ display : 'grid' , padding : '5px 10px' , gap : '10px'})} >
-          <div style = ${useStyle({ display : 'inline-flex' , gridColumn : 1 , gridRow : 1 })}>
-            ${Icon( TGIcon )}
-            ${Icon( XIcon )}
+          <div style = ${useStyle({ display : 'inline-flex' , gridColumn : 1 , gridRow : 1 , alignItems : 'center' , gap : '10px' })}>
+            ${Icon( { svg : TGIcon } )}
+            ${Icon( { svg : XIcon } )}
           </div>
           <div style = ${useStyle({ display : 'inline-flex' , gridColumn : 1 , gridRow : 1 , justifyContent : 'center' })}>
             <h1 style = ${useStyle({ padding : 0 , margin : 0 , cursor : "pointer" })} @mousedown=${() => { window.location.hash = '#/' }} >jeeterminator</h1>
